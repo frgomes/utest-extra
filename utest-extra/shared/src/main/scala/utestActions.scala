@@ -1,9 +1,9 @@
 package utest.extra
 
 trait utestActions {
-  def ignored(action:  Unit): Unit = ignored
-  def ignoredif(condition: Boolean)(action:  Unit): Unit = if(condition) ignored else action
-  def pending(action:  Unit): Unit = {
+  def ignored(action: => Unit): Unit = ignored
+  def ignoredif(condition: Boolean)(action: => Unit): Unit = if(condition) ignored else action
+  def pending(action: => Unit): Unit = {
     try {
       action
       pending("PENDING", new TestPendingException)
